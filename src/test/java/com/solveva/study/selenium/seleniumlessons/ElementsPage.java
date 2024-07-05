@@ -15,7 +15,8 @@ public class ElementsPage {
         driver = webDriver;
     }
 
-    @FindBy(xpath = "//ul[@class='menu-list']")
+//    @FindBy(xpath = "//ul[@class='menu-list']")
+//    @FindBy(xpath = "//div[contains(@class, 'header-wrapper') and cotains(style, 'background: rgb(108, 117, 125);']")
     private WebElement elements;
 
     @FindBy(xpath = "//div[contains(@class, 'element-group')][1]//li[contains(@id, 'item-')]")
@@ -24,5 +25,8 @@ public class ElementsPage {
 
     public List<WebElement> getElementsList() {
         return elementList;
+    }
+    public void clickOnElements(){
+        elements.click();
     }
 }

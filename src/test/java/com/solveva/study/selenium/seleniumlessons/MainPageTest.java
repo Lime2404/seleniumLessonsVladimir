@@ -86,8 +86,8 @@ public class MainPageTest {
 //        element.click();
 ////        mainPage2.clickOnElements();
 //        wait(10000L);
-
         ElementsPage sideBarElements = new ElementsPage();
+        sideBarElements.clickOnElements();
 //        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
         List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).collect(Collectors.toList());
         Assertions.assertArrayEquals(expectedList, actualList.toArray());
