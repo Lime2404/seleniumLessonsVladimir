@@ -15,6 +15,7 @@ public class ElementsPage {
         driver = webDriver;
     }
 
+    @FindBy(xpath = "//div[@class='element-group']")
 //    @FindBy(xpath = "//ul[@class='menu-list']")
 //    @FindBy(xpath = "//div[contains(@class, 'header-wrapper') and cotains(style, 'background: rgb(108, 117, 125);']")
     private WebElement elements;
