@@ -29,7 +29,7 @@ public class MainPage {
     @FindBy(xpath = "//div[@class='card mt-4 top-card'][1]")
     public WebElement elements;
 
-    public void clickOnElements() {
-        elements.click(); // вынести в отдельный класс, так как не везде нужны;
-    }
+//    public void clickOnElements() {
+//        elements.click(); // вынести в отдельный класс, так как не везде нужны;
+//    }
 }

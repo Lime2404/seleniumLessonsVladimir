@@ -29,7 +29,8 @@ public class MainPageTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 //        driver.get("https://www.jetbrains.com/");
-        driver.get("https://demoqa.com/");
+//        driver.get("https://demoqa.com/");
+        driver.get("https://demoqa.com/elements");
 
         mainPage = new MainPage(driver);
     }
@@ -77,14 +78,14 @@ public class MainPageTest {
     @Test
     public void verifyElementPageEntities() throws InterruptedException {
         String[] expectedList = {"Text Box", "Check Box", "Radio Button", "Web Tables", "Buttons", "Links", "Broken Links - Images", "Upload and Download", "Dynamic Properties"};
-        MainPage mainPage2 = new MainPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 секунд ожидания
-        // Ожидание, пока элемент станет видимым
-        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card mt-4 top-card']")));
-        // Дальнейшие действия с элементом
-        element.click();
-//        mainPage2.clickOnElements();
-        wait(10000L);
+//        MainPage mainPage2 = new MainPage(driver);
+//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 секунд ожидания
+//        // Ожидание, пока элемент станет видимым
+//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card mt-4 top-card']")));
+//        // Дальнейшие действия с элементом
+//        element.click();
+////        mainPage2.clickOnElements();
+//        wait(10000L);
 
         ElementsPage sideBarElements = new ElementsPage();
 //        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();

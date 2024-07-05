@@ -20,9 +20,9 @@ public class ElementsPage {
 
     @FindBy(xpath = "//div[contains(@class, 'element-group')][1]//li[contains(@id, 'item-')]")
 //    @FindBy(xpath = "//div[@class=element-group]")
-    private List<WebElement> eleList;
+    private List<WebElement> elementList;
 
     public List<WebElement> getElementsList() {
-        return eleList;
+        return elementList;
     }
 }
