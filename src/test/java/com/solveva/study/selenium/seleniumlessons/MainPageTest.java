@@ -1,5 +1,6 @@
 package com.solveva.study.selenium.seleniumlessons;
 
+import dev.failsafe.internal.util.Assert;
 import org.junit.jupiter.api.*;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -13,12 +14,14 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class MainPageTest {
     private WebDriver driver;
     private MainPage mainPage;
+    private ElementsPage elementsPage;  // инициализируем страницу и ниже передаем в ней драйвер как указано в конструкторе
 
     @BeforeEach
     public void setUp() {
@@ -32,7 +35,9 @@ public class MainPageTest {
 //        driver.get("https://demoqa.com/");
         driver.get("https://demoqa.com/elements");
 
+//        mainPage = new MainPage(driver);
         mainPage = new MainPage(driver);
+        elementsPage = new ElementsPage(driver); // передача драйвера
     }
 
     @AfterEach
@@ -77,20 +82,21 @@ public class MainPageTest {
 
     @Test
     public void verifyElementPageEntities() throws InterruptedException {
+//        String[] expectedList = {"Text Box", "Check Box", "Radio Button", "Web Tables", "Buttons", "Links", "Broken Links - Images", "Upload and Download", "Dynamic Properties"};
         String[] expectedList = {"Text Box", "Check Box", "Radio Button", "Web Tables", "Buttons", "Links", "Broken Links - Images", "Upload and Download", "Dynamic Properties"};
-//        MainPage mainPage2 = new MainPage(driver);
-//        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10)); // 10 секунд ожидания
-//        // Ожидание, пока элемент станет видимым
-//        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[@class='card mt-4 top-card']")));
-//        // Дальнейшие действия с элементом
-//        element.click();
-////        mainPage2.clickOnElements();
-//        wait(10000L);
-        ElementsPage sideBarElements = new ElementsPage();
-        sideBarElements.clickOnElements();
-//        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).toList();
-        List<String> actualList = sideBarElements.getElementsList().stream().map(WebElement::getText).collect(Collectors.toList());
+        List<String> actualList = elementsPage.getElementsList().stream().map(WebElement::getText).collect(Collectors.toList());
+//        wait(10000);
+//        List<WebElement> elements1 = driver.findElements(By.xpath("//div[contains(@class, 'element-group')][1]//li[contains(@id, 'item-')]")).get(0).isDisplayed();
+//        Boolean elements1 = driver.findElements(By.xpath("//div[contains(@class, 'element-group')][1]//li[contains(@id, 'item-')]")).get(0).isDisplayed();
+//        System.out.println(elements1);
+        System.out.println("Expected: " + Arrays.stream(expectedList).collect(Collectors.toList()) );
+        System.out.println("Actual: " + actualList);
+//        Assertions.assertArrayEquals(Arrays.stream(expectedList).collect(Collectors.toList()), actualList);
         Assertions.assertArrayEquals(expectedList, actualList.toArray());
+//        Assertions.assertArrayEquals(Arrays.stream(expectedList).collect(Collectors.toList()), actualList);
+
+//        List<String> actualList = elements1.stream().map(WebElement::getText).collect(Collectors.toList());
+//        Assertions.assertArrayEquals(expectedList, actualList.toArray());
     }
 
 }
